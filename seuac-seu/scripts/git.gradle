@@ -1,0 +1,14 @@
+
+if (!hasProperty('gitUsername')) { 
+	ext.gitUsername = '' 
+}
+if (!hasProperty('gitPassword')) {
+	ext.gitPassword = '' 
+}
+
+git {
+    code {
+        url "https://${gitUsername}:${gitPassword}@github.com/qaware/QAseuac.git"
+        directory file("S:/codebase/seu-as-code/")
+    }    
+}

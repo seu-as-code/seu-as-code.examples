@@ -1,0 +1,65 @@
+apply plugin: 'base'
+apply plugin: 'seuac-base'
+apply plugin: 'seuac-git'
+
+apply from: 'scripts/git.gradle'
+
+buildscript {
+    repositories { 
+        mavenCentral()
+        maven {
+            credentials {
+                username = project.hasProperty('nexusUsername') ? project.nexusUsername : System.getProperty("user.name")
+				password = project.hasProperty('nexusPassword') ? project.nexusPassword : ''
+            }
+            url "https://www.qaware.de:443/nexus/content/repositories/qaware-seu/"
+        }    
+	}
+    dependencies {
+		classpath 'de.qaware.seu:seuac-base-plugin:1.1.0'
+		classpath 'de.qaware.seu:seuac-git-plugin:1.1.1'
+    }
+}
+
+repositories {
+    flatDir { dirs 'repo' }
+    mavenCentral()
+    maven {
+        credentials {
+            username = project.hasProperty('nexusUsername') ? project.nexusUsername : System.getProperty("user.name")
+			password = project.hasProperty('nexusPassword') ? project.nexusPassword : ''
+        }
+        url "https://www.qaware.de:443/nexus/content/repositories/qaware-seu/"
+    }
+}
+
+dependencies {
+    seuac 'org.codehaus.groovy.modules.scriptom:scriptom:1.6.0'
+    seuac 'com.h2database:h2:1.3.176'
+
+    software 'de.qaware.seu:seuac-base:1.8'
+    home 'de.qaware.seu:seuac-home:1.2'
+
+	software 'de.qaware.seu:apache-ant:1.9.4'
+	software 'de.qaware.seu:apache-maven:3.2.5'
+	
+	software 'de.qaware.seu:gradle:2.2.1'
+	software 'de.qaware.seu:groovy:2.3.9'
+	software 'de.qaware.seu:nodejs:0.10.33'	
+	
+	software 'de.qaware.seu:intellij:14.1.4'
+	software 'de.qaware.seu:jdk7:1.7.0_75'
+	software 'de.qaware.seu:jdk8:1.8.0_45'
+	
+	software 'de.qaware.seu:git:1.9.5'
+	software 'de.qaware.seu:subversion:1.8.5'    
+}
+
+seuAsCode {
+	seuHome = 'S:'
+	projectName = 'SEU as Code'
+}
+	
+task wrapper(type: Wrapper, description: 'Generate Gradle wrapper for SEU') {
+    gradleVersion = '2.3'
+}
