@@ -1,18 +1,16 @@
-if (!hasProperty('seuHome')) {
-	ext.seuHome = buildDir 
+
+if (!hasProperty('svnUsername')) {
+    ext.svnUsername = ''
+}
+if (!hasProperty('svnPassword')) {
+    ext.svnPassword = ''
 }
 
 subversion {
-	code {
-		url codeSvnURL
+	Examples {
+		url examplesSvnURL
 		directory file("$seuHome/codebase/")
-		username = project.hasProperty('qawareUsername') ? project.qawareUsername : ''
-        password = project.hasProperty('qawarePassword') ? project.qawarePassword : ''
-	}
-	docs {
-		url docsSvnURL
-		directory file("$seuHome/docbase/")
-		username = project.hasProperty('qawareUsername') ? project.qawareUsername : ''
-        password = project.hasProperty('qawarePassword') ? project.qawarePassword : ''
-	}
+		username = svnUsername
+        password = svnPassword
+	}	
 }
