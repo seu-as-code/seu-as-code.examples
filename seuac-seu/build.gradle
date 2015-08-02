@@ -52,14 +52,13 @@ dependencies {
 	software 'de.qaware.seu:jdk8:1.8.0_45'
 	
 	software 'de.qaware.seu:git:1.9.5'
-	software 'de.qaware.seu:subversion:1.8.5'    
 }
 
 seuAsCode {
 	seuHome = 'S:'
 	projectName = 'SEU as Code'
 }
-	
-task wrapper(type: Wrapper, description: 'Generate Gradle wrapper for SEU') {
-    gradleVersion = '2.3'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
 }
