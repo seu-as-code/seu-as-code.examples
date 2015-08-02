@@ -3,10 +3,10 @@
 [![Apache License 2](http://img.shields.io/badge/license-ASF2-blue.svg)](https://github.com/seu-as-code/seu-as-code.examples/blob/master/LICENSE)
 [![Join on Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/seu-as-code/seu-as-code?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-# SEU-as-Code Examples
+# Java 8 SEU-as-Code Example
 
-  * SEU: German for software development environment (Software Entwicklungs-Umgebung)
-  * as Code: to be able to configure, build and program the SEU as source code
-  
-The examples show different working project examples. The development environment for 
-SEU-as-Code itself is also part of the examples.
+This example is a simple Java8 development environment. It contains the following packages and features:
+- the SEU must be mounted under `J:`
+- custom SEU environment package located in the `repo/` directory
+- the OpenJDK 8u40 package is installed locally in the SEU
+- additionally Maven 3.3.3 and Tomcat 8.0.24 are installed
