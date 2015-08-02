@@ -7,8 +7,41 @@ if (!hasProperty('gitPassword')) {
 }
 
 git {
-    code {
-        url "https://${gitUsername}:${gitPassword}@github.com/qaware/QAseuac.git"
-        directory file("S:/codebase/seu-as-code/")
+	Archetype {
+        url 'https://github.com/seu-as-code/seu-as-code.archetype.git'
+        directory file("$seuRoot/codebase/seu-as-code.archetype/")
+        username = gitUsername
+        password = gitPassword
     }    
+	Examples {
+        url 'https://github.com/seu-as-code/seu-as-code.examples.git'
+        directory file("$seuRoot/codebase/seu-as-code.examples/")
+        username = gitUsername
+        password = gitPassword
+    }
+	Packages {
+        url 'https://github.com/seu-as-code/seu-as-code.packages.git'
+        directory file("$seuRoot/codebase/seu-as-code.packages/")
+        username = gitUsername
+        password = gitPassword
+    }
+	Plugins {
+        url 'https://github.com/seu-as-code/seu-as-code.plugins.git'
+        directory file("$seuRoot/codebase/seu-as-code.plugins/")
+        username = gitUsername
+        password = gitPassword
+    }
+		
+	PackagesWiki {
+        url 'https://github.com/seu-as-code/seu-as-code.packages.wiki.git'
+        directory file("$seuRoot/docbase/seu-as-code.packages.wiki/")
+        username gitUsername
+        password gitPassword
+    }
+    PluginsWiki {
+        url 'https://github.com/seu-as-code/seu-as-code.plugins.wiki.git'
+        directory file("$seuRoot/docbase/seu-as-code.plugins.wiki/")
+        username gitUsername
+        password gitPassword
+    }	
 }
