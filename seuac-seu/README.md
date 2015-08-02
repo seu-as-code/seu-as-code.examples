@@ -5,7 +5,7 @@
 
 # SEU-as-Code Example
 
-This example is the software development environment for SEU-as-Code itself. It contains the following packages and features:
+This example is the software development environment for SEU-as-Code itself. It contains the following features:
 - the SEU must be mounted under `S:`
 - the repositories section contains a company private package repository
 - several internal software dependencies are used
