@@ -7,7 +7,6 @@
 
 This example is a simple JavaEE7 development environment. It contains the following packages and features:
 - the SEU must be mounted under `J:`
-- custom SEU environment package located in the `repo/` directory
 - the OpenJDK 8u40 package is installed locally in the SEU
 - additionally Maven 3.3.3 and Gradle 2.5 are installed as build tools
 - a Glassfish v4.1 application server is installed

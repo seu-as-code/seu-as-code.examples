@@ -31,7 +31,7 @@ dependencies {
     seuac 'com.h2database:h2:1.3.176'
 
     home 'de.qaware.seu.as.code:seuac-home:2.0.0'
-    software ':java8-seu-environment:2.0.0@zip'
+    software 'de.qaware.seu.as.code:seuac-environment:2.0.0:jdk8'
 
     software 'org.apache.maven:apache-maven:3.3.3'
     software 'org.gradle:gradle:2.5'
