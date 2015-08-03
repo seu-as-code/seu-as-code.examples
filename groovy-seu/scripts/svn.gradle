@@ -9,7 +9,7 @@ if (!hasProperty('svnPassword')) {
 subversion {
 	Examples {
 		url examplesSvnURL
-		directory file("$seuHome/codebase/")
+		directory file("$seuHome/codebase/seu-as-code.examples/")
 		username = svnUsername
         password = svnPassword
 	}	
