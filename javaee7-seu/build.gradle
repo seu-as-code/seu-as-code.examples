@@ -33,12 +33,13 @@ dependencies {
     home 'de.qaware.seu.as.code:seuac-home:2.0.0'
     software 'de.qaware.seu.as.code:seuac-environment:2.0.0:jdk8'
 
+	software 'net.java:openjdk8:8u40'
+	
     software 'org.apache.maven:apache-maven:3.3.3'
     software 'org.gradle:gradle:2.5'
 	
-	
-	
-	software 'net.java:openjdk8:8u40'
+	software 'net.java:glassfish4:4.1'
+	// software 'net.java:glassfish4:4.1:web'	
 }
 
 seuAsCode {
