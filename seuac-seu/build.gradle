@@ -46,6 +46,7 @@ dependencies {
 	software 'de.qaware.seu:gradle:2.2.1'
 	software 'de.qaware.seu:groovy:2.3.9'
 	software 'de.qaware.seu:nodejs:0.10.33'	
+	software 'org.jruby:jruby:1.7.21'
 	
 	software 'de.qaware.seu:intellij:14.1.4'
 	software 'de.qaware.seu:jdk7:1.7.0_75'
