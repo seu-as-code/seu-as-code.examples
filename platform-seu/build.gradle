@@ -1,0 +1,61 @@
+/*           _____  ______ __  __                                    __
+ *          / ___/ / ____// / / /  ____ _ _____   ______ ____   ____/ /___
+ *          \__ \ / __/  / / / /  / __ `// ___/  / ____// __ \ / __  // _ \
+ *         ___/ // /___ / /_/ /  / /_/ /(__  )  / /___ / /_/ // /_/ //  __/
+ *        /____//_____/ \____/   \__,_//____/   \____/ \____/ \__,_/ \___/
+ */
+
+plugins {
+    id 'de.qaware.seu.as.code.base' version '2.4.0'
+    id 'de.qaware.seu.as.code.git' version '2.2.0'
+}
+
+import static de.qaware.seu.as.code.plugins.base.Platform.isWindows
+
+ext {
+    seuRoot = isWindows() ? 'T:' : '/Volumes/Platform-SEU'
+    seuName = 'SEU-as-code Template'
+}
+
+apply from: 'scripts/git.gradle'
+
+repositories {
+    flatDir { dirs 'repo' }
+  	maven {
+  		url 'https://dl.bintray.com/seu-as-code/maven'
+  	}
+    jcenter()
+}
+
+dependencies {
+    seuac 'org.codehaus.groovy.modules.scriptom:scriptom:1.6.0'
+    seuac 'com.h2database:h2:1.4.188'
+
+    home 'de.qaware.seu.as.code:seuac-home:2.3.0'
+    software 'de.qaware.seu.as.code:seuac-environment:2.3.0:$osClassifier'
+}
+
+platform {
+    windows {
+        dependencies {
+            software 'io.github.msysgit:git:1.9.5'
+            software 'org.apache.maven:apache-maven:3.3.3'
+            software 'org.gradle:gradle:2.13'
+        }
+    }
+    macOs {
+        dependencies {
+            software 'org.apache.maven:apache-maven:3.3.9'
+            software 'org.gradle:gradle:2.14'
+        }
+    }
+}
+
+seuAsCode {
+    seuHome = seuRoot
+    projectName = seuName
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
