@@ -14,7 +14,7 @@ import static de.qaware.seu.as.code.plugins.base.Platform.isWindows
 
 ext {
     seuRoot = isWindows() ? 'T:' : '/Volumes/Platform-SEU'
-    seuName = 'SEU-as-code Template'
+    seuName = 'Multi-Platform SEU Example'
 }
 
 apply from: 'scripts/git.gradle'
@@ -42,12 +42,34 @@ platform {
             software 'org.apache.maven:apache-maven:3.3.3'
             software 'org.gradle:gradle:2.13'
         }
+
+        task helloWorld() << {
+            println 'Hello Windows.'
+        }
     }
     macOs {
         dependencies {
             software 'org.apache.maven:apache-maven:3.3.9'
             software 'org.gradle:gradle:2.14'
         }
+
+        task helloWorld() << {
+            println 'Hello MacOS.'
+        }
+    }
+}
+
+task helloWorldEnabledOnWindows() {
+    enabled = isWindows()
+    doLast {
+        println 'Hello SEU-as-code on Windows.'
+    }
+}
+
+task helloWorldOnlyIfMac() {
+    onlyIf { isMacOs() }
+    doLast {
+      println 'Hello SEU-as-code on Mac.'
     }
 }
 
