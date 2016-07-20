@@ -29,6 +29,7 @@ plugins {
 */
 
 import static de.qaware.seu.as.code.plugins.base.Platform.isWindows
+import static de.qaware.seu.as.code.plugins.base.Platform.isMacOs
 
 ext {
     seuRoot = isWindows() ? 'T:' : '/Volumes/Platform-SEU'
@@ -50,44 +51,46 @@ dependencies {
     seuac 'com.h2database:h2:1.4.188'
 
     home 'de.qaware.seu.as.code:seuac-home:2.3.0'
-    software 'de.qaware.seu.as.code:seuac-environment:2.3.0:$osClassifier'
+    software "de.qaware.seu.as.code:seuac-environment:2.3.0:$osClassifier"
 }
 
 platform {
-    windows {
+    win {
         dependencies {
             software 'io.github.msysgit:git:1.9.5'
             software 'org.apache.maven:apache-maven:3.3.3'
             software 'org.gradle:gradle:2.13'
         }
 
-        task helloWorld() << {
-            println 'Hello Windows.'
+        task helloSeuAsCode(group: 'Example') << {
+            println 'Hello SEU-as-code on Windows.'
         }
     }
-    macOs {
+    mac {
         dependencies {
             software 'org.apache.maven:apache-maven:3.3.9'
             software 'org.gradle:gradle:2.14'
         }
 
-        task helloWorld() << {
-            println 'Hello MacOS.'
+        task helloSeuAsCode(group: 'Example') << {
+            println 'Hello SEU-as-code on MacOS.'
         }
     }
 }
 
-task helloWorldEnabledOnWindows() {
+task helloWorld(group: 'Example', dependsOn: ['helloWorldOnWindows', 'helloWorldOnlyIfMac']) {}
+
+task helloWorldOnWindows(group: 'Example') {
     enabled = isWindows()
     doLast {
-        println 'Hello SEU-as-code on Windows.'
+        println 'Hello World on Windows.'
     }
 }
 
-task helloWorldOnlyIfMac() {
+task helloWorldOnlyIfMac(group: 'Example') {
     onlyIf { isMacOs() }
     doLast {
-      println 'Hello SEU-as-code on Mac.'
+      println 'Hello World only if Mac.'
     }
 }
 
