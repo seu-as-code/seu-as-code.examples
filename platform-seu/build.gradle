@@ -7,7 +7,8 @@
 
 plugins {
     id 'de.qaware.seu.as.code.base' version '2.4.0'
-    id 'de.qaware.seu.as.code.git' version '2.2.0'
+    id 'de.qaware.seu.as.code.credentials' version '2.4.0.RC1'
+    id 'de.qaware.seu.as.code.git' version '2.3.0.RC2'
 }
 
 import static de.qaware.seu.as.code.plugins.base.Platform.isWindows
@@ -74,6 +75,17 @@ task helloWorldOnlyIfMac(group: 'Example') {
     doLast {
       println 'Hello World only if Mac.'
     }
+}
+
+credentials {
+  keychainFile = "$projectDir/SEU-as-code.keychain"
+  propertyFile = "$projectDir/secure-credentials.properties"
+}
+
+task showCredentials(group: 'Security') {
+  doLast {
+    println "${credentials['Nexus'].username} ${credentials['Nexus'].password}"
+  }
 }
 
 seuAsCode {
