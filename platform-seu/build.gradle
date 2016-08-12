@@ -7,7 +7,7 @@
 
 plugins {
     id 'de.qaware.seu.as.code.base' version '2.4.0'
-    id 'de.qaware.seu.as.code.credentials' version '2.4.0.RC2'
+    id 'de.qaware.seu.as.code.credentials' version '2.4.0.RC3'
     id 'de.qaware.seu.as.code.git' version '2.3.0.RC2'
 }
 
