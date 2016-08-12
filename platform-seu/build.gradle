@@ -7,7 +7,7 @@
 
 plugins {
     id 'de.qaware.seu.as.code.base' version '2.4.0'
-    id 'de.qaware.seu.as.code.credentials' version '2.4.0.RC1'
+    id 'de.qaware.seu.as.code.credentials' version '2.4.0.RC2'
     id 'de.qaware.seu.as.code.git' version '2.3.0.RC2'
 }
 
@@ -82,7 +82,7 @@ credentials {
   propertyFile = "$projectDir/secure-credentials.properties"
 }
 
-task showCredentials(group: 'Security') {
+task showNexusCredentials(group: 'Security', description: 'Echo Nexus credentials.') {
   doLast {
     println "${credentials['Nexus'].username} ${credentials['Nexus'].password}"
   }
