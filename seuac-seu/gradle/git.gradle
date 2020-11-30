@@ -1,0 +1,39 @@
+git {
+	Archetype {
+        url 'https://github.com/seu-as-code/seu-as-code.archetype.git'
+        directory file("$seuAsCode.seuHome/codebase/seu-as-code.archetype/")
+        username = System.getenv("GITHUB_USERNAME")?: ""
+        password = System.getenv("GITHUB_PASSWORD")?: ""
+    }
+	Examples {
+        url 'https://github.com/seu-as-code/seu-as-code.examples.git'
+        directory file("$seuAsCode.seuHome/codebase/seu-as-code.examples/")
+        username = System.getenv("GITHUB_USERNAME")?: ""
+        password = System.getenv("GITHUB_PASSWORD")?: ""
+    }
+	Packages {
+        url 'https://github.com/seu-as-code/seu-as-code.packages.git'
+        directory file("$seuAsCode.seuHome/codebase/seu-as-code.packages/")
+        username = System.getenv("GITHUB_USERNAME")?: ""
+        password = System.getenv("GITHUB_PASSWORD")?: ""
+    }
+	Plugins {
+        url 'https://github.com/seu-as-code/seu-as-code.plugins.git'
+        directory file("$seuAsCode.seuHome/codebase/seu-as-code.plugins/")
+        username = System.getenv("GITHUB_USERNAME")?: ""
+        password = System.getenv("GITHUB_PASSWORD")?: ""
+    }
+
+	PackagesWiki {
+        url 'https://github.com/seu-as-code/seu-as-code.packages.wiki.git'
+        directory file("$seuAsCode.seuHome/docbase/seu-as-code.packages.wiki/")
+        username System.getenv("GITHUB_USERNAME")?: ""
+        password System.getenv("GITHUB_PASSWORD")?: ""
+    }
+    PluginsWiki {
+        url 'https://github.com/seu-as-code/seu-as-code.plugins.wiki.git'
+        directory file("$seuAsCode.seuHome/docbase/seu-as-code.plugins.wiki/")
+        username System.getenv("GITHUB_USERNAME")?: ""
+        password System.getenv("GITHUB_PASSWORD")?: ""
+    }
+}

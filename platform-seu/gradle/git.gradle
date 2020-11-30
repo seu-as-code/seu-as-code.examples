@@ -9,7 +9,7 @@ if (!hasProperty('gitPassword')) {
 git {
     Examples {
         url examplesGitURL
-        directory file("$seuRoot/codebase/seu-as-code.examples/")
+        directory file("$seuAsCode.seuHome/codebase/seu-as-code.examples/")
         username = gitUsername
         password = gitPassword
     }

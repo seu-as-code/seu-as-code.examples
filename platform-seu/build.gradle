@@ -6,36 +6,39 @@
  */
 
 plugins {
-    id 'de.qaware.seu.as.code.base' version '2.4.0'
-    id 'de.qaware.seu.as.code.credentials' version '2.4.0.RC3'
-    id 'de.qaware.seu.as.code.git' version '2.3.0.RC2'
+    id 'de.qaware.seu.as.code.base' version '3.0.0'
+    id 'de.qaware.seu.as.code.credentials' version '3.0.0'
+    id 'de.qaware.seu.as.code.git' version '3.0.0'
 }
 
 import static de.qaware.seu.as.code.plugins.base.Platform.isWindows
 import static de.qaware.seu.as.code.plugins.base.Platform.isMacOs
 
-ext {
-    seuRoot = isWindows() ? 'T:' : '/Volumes/Platform-SEU'
-    seuName = 'Multi-Platform SEU Example'
+seuAsCode {
+    seuHome = file("${projectDir}/seu").absolutePath
+    projectName = "Multi-Platform SEU Example"
 }
 
-apply from: 'scripts/git.gradle'
-
 repositories {
-    flatDir { dirs 'repo' }
-  	maven {
-  		url 'https://dl.bintray.com/seu-as-code/maven'
-  	}
+    maven {
+        url "${seuAsCode.seuHome}/repository"
+    }
+    maven {
+        url 'https://dl.bintray.com/seu-as-code/maven'
+    }
     jcenter()
 }
 
-dependencies {
-    seuac 'org.codehaus.groovy.modules.scriptom:scriptom:1.6.0'
-    seuac 'com.h2database:h2:1.4.188'
-
-    home 'de.qaware.seu.as.code:seuac-home:2.3.0'
-    software "de.qaware.seu.as.code:seuac-environment:2.3.0:$osClassifier"
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
 }
+
+dependencies {
+    home 'de.qaware.seu.as.code:seuac-home:2.3.0'
+    software "de.qaware.seu.as.code:seuac-environment:2.6.0:$osClassifier"
+}
+
+apply from: 'gradle/git.gradle'
 
 platform {
     win {
@@ -86,13 +89,4 @@ task showNexusCredentials(group: 'Security', description: 'Echo Nexus credential
   doLast {
     println "${credentials['Nexus'].username} ${credentials['Nexus'].password}"
   }
-}
-
-seuAsCode {
-    seuHome = seuRoot
-    projectName = seuName
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.14'
 }
