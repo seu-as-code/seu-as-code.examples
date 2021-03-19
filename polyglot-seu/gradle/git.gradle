@@ -1,0 +1,8 @@
+git {
+    Examples {
+        url examplesGitURL
+        directory file("$seuAsCode.seuHome/codebase/seu-as-code.examples/")
+        username = System.getenv("GITHUB_USERNAME")?: ""
+        password = System.getenv("GITHUB_PASSWORD")?: ""
+    }
+}

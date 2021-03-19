@@ -1,0 +1,8 @@
+// Enable the following configuration for plugin development
+//includeBuild("../../seu-as-code.plugins") {
+//    dependencySubstitution {
+//        substitute module("de.qaware.seu.as.code.base:de.qaware.seu.as.code.base.gradle.plugin") with project(":seuac-base-plugin")
+//        substitute module("de.qaware.seu.as.code.git:de.qaware.seu.as.code.git.gradle.plugin") with project(":seuac-git-plugin")
+//        substitute module("de.qaware.seu.as.code.credentials:de.qaware.seu.as.code.credentials.gradle.plugin") with project(":seuac-credentials-plugin")
+//    }
+//}
